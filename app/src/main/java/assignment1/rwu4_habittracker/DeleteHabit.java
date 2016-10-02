@@ -33,9 +33,7 @@ public class DeleteHabit extends Activity {
 
         deleteListView = (ListView) findViewById(R.id.deleteHabitListView);
 
-        habitList = HabitList.getHabitList();
-
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1,habitList);
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1,HabitList.getHabitList());
         deleteListView.setAdapter(adapter);
 
         deleteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

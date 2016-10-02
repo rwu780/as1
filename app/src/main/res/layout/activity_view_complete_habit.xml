@@ -6,7 +6,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Long click a habit to continue"
+        android:text="click a habit to view summary"
         android:id="@+id/longClickToViewTextView"
         android:layout_alignParentBottom="false"
         android:layout_alignParentLeft="true"

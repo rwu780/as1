@@ -35,8 +35,7 @@ public class ViewCompleteHabit extends Activity {
 
         completeHabitListView = (ListView) findViewById(R.id.completedHabitListView);
 
-        habitList = HabitList.getHabitList();
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, habitList);
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getHabitList());
         completeHabitListView.setAdapter(adapter);
 
         completeHabitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -80,7 +79,6 @@ public class ViewCompleteHabit extends Activity {
     }
 
     private void saveInFile(){
-        String FILENAME = "file.sav";
         try{
             FileOutputStream fos = openFileOutput(FILENAME, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));

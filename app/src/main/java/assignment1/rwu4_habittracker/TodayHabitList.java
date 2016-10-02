@@ -44,14 +44,14 @@ public class TodayHabitList extends Activity {
         loadFromFile();
 
         habitListView = (ListView) findViewById(R.id.HabitListView);
-        //todayList = HabitList.getTodayHabitList();
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getHabitList());
+
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getTodayHabitList());
         habitListView.setAdapter(adapter);
 
         habitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Habit habit = todayList.get(position);
+                Habit habit = HabitList.getTodayHabitList().get(position);
                 Toast.makeText(getApplicationContext(), habit.getName() + " Completed", Toast.LENGTH_SHORT).show();
                 habit.addCompletion();
 
@@ -63,10 +63,12 @@ public class TodayHabitList extends Activity {
 
     }
 
+
     @Override
     public void onResume(){
-        super.onResume();
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getTodayHabitList());
         adapter.notifyDataSetChanged();
+        super.onResume();
     }
 
     public void createListView(){
