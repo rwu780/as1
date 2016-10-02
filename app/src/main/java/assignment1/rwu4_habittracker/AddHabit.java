@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -23,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +34,8 @@ public class AddHabit extends Activity {
 
     private ListView  dayListView;
     private ListViewAdapter adapter;
+    private String date;
+    private SimpleDateFormat dt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,21 +58,33 @@ public class AddHabit extends Activity {
         });
 
         EditText editText = (EditText) findViewById(R.id.DateEditText);
-        //String date = new Date().toString();
 
-        SimpleDateFormat dt1 = new SimpleDateFormat("dd/M/yyyy");
-        String date = dt1.format(new Date());
+        dt1 = new SimpleDateFormat("dd/M/yyyy");
+        date = dt1.format(new Date());
+
         editText.setText(date);
+
+
 
     }
 
     public void addHabit(){
+        //Get Habit Name;
         EditText editText = (EditText) findViewById(R.id.newHabitName);
-        HabitList.getHabitList().add(new Habit(editText.getText().toString(), new Date(), adapter.getDaySelected()));
-        saveInFile();
 
-        Intent intent = new Intent(AddHabit.this, TodayHabitList.class);
-        startActivity(intent);
+        //Get start Date;
+        EditText editTextDate = (EditText) findViewById(R.id.DateEditText);
+        try {
+            Date setDate = new SimpleDateFormat("dd/MM/yyyy").parse(editTextDate.getText().toString());
+            HabitList.getHabitList().add(new Habit(editText.getText().toString(), setDate, adapter.getDaySelected()));
+            saveInFile();
+
+            Intent intent = new Intent(AddHabit.this, TodayHabitList.class);
+            startActivity(intent);
+        } catch (ParseException e) {
+            Toast.makeText(getApplicationContext(), "Please enter the date according to format(dd/M/yyyy)", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public List<String> getDays(){
