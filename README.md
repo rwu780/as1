@@ -1,4 +1,6 @@
 # as1
+Assignment 1 for CMPUT 379
+Name: Rui Wu
 
 Notes for grader:
 Since this video is record on Sunday, thus the video is bit different than the spec
