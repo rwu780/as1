@@ -12,6 +12,9 @@ public class HabitList {
     private static List<Habit> habitList;
     private static List<Habit> todayHabitList;
 
+    public HabitList(){
+        habitList = new ArrayList<Habit>();
+    }
     public static void setHabitList(List<Habit> list){
         habitList = list;
     }
@@ -32,7 +35,10 @@ public class HabitList {
         return habitList;
     }
     public static List<Habit> getTodayHabitList(){
-        todayHabitList = new ArrayList<Habit>();
+        if(todayHabitList == null) {
+            todayHabitList = new ArrayList<Habit>();
+        }
+        todayHabitList.clear();
         for(Habit i:habitList){
             if(i.containDay(Calendar.DAY_OF_WEEK)){
                 todayHabitList.add(i);

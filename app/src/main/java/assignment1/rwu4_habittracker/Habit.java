@@ -20,6 +20,13 @@ public class Habit {
         completionDay = new ArrayList<Date>();
     }
 
+    public Habit(){
+        this.Name = null;
+        this.date = new Date();
+        this.recurDays = new ArrayList<Integer>();
+        completionDay = new ArrayList<Date>();
+    }
+
     public String getName() {
         return Name;
     }
@@ -47,7 +54,4 @@ public class Habit {
     public String toString(){
         return getName();
     }
-
-
-
 }

@@ -51,7 +51,6 @@ public class DeleteHabit extends Activity {
     }
 
     private void saveInFile(){
-        String FILENAME = "file.sav";
         try{
             FileOutputStream fos = openFileOutput(FILENAME, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));

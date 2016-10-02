@@ -23,13 +23,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class AddHabit extends Activity {
 
-    private List<Integer> recurDay;
     private ListView  dayListView;
     private ListViewAdapter adapter;
 
@@ -40,8 +40,7 @@ public class AddHabit extends Activity {
         List<String> days = getDays();
 
         dayListView = (ListView) findViewById(R.id.selectDaysListView);
-        //TextView textView = (TextView) findViewById(R.id.item_tv);
-        //textView.setTextColor(Color.BLACK);
+
         adapter = new ListViewAdapter(getApplicationContext(), days);
         dayListView.setAdapter(adapter);
 
@@ -53,6 +52,13 @@ public class AddHabit extends Activity {
                 addHabit();
             }
         });
+
+        EditText editText = (EditText) findViewById(R.id.DateEditText);
+        //String date = new Date().toString();
+
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd/M/yyyy");
+        String date = dt1.format(new Date());
+        editText.setText(date);
 
     }
 

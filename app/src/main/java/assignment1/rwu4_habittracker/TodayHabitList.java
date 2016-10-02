@@ -44,8 +44,8 @@ public class TodayHabitList extends Activity {
         loadFromFile();
 
         habitListView = (ListView) findViewById(R.id.HabitListView);
-        todayList = HabitList.getTodayHabitList();
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, todayList);
+        //todayList = HabitList.getTodayHabitList();
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getHabitList());
         habitListView.setAdapter(adapter);
 
         habitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
