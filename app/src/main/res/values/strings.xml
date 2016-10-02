@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RWU4 - HabitTracker</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_habit">AddHabit</string>
+    <string name="title_activity_delete_habit">DeleteHabit</string>
+    <string name="title_activity_view_complete_habit">ViewCompleteHabit</string>
+    <string name="title_activity_summary">SummaryActivity</string>
+</resources>
