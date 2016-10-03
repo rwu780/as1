@@ -46,7 +46,7 @@ public class HabitListTest extends ActivityInstrumentationTestCase2<TodayHabitLi
         assertEquals(habit, habitList.get(habitList.indexOf(habit)));
     }
 
-    public void getTodayHabit(){
+    public void testgetTodayHabit(){
         List<Habit> habitList = HabitList.getHabitList();
         List<Integer> days = new ArrayList<Integer>();
         days.add(1);

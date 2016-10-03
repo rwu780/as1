@@ -46,6 +46,9 @@ public class Habit {
         return completionDay;
     }
     public Boolean containDay(int day){
+        if(recurDays == null){
+            return false;
+        }
         if(recurDays.contains(day)){
             return true;
         }
