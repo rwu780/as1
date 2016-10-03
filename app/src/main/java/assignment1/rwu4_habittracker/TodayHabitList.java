@@ -44,13 +44,18 @@ public class TodayHabitList extends Activity {
         loadFromFile();
 
         habitListView = (ListView) findViewById(R.id.HabitListView);
-
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getTodayHabitList());
+        todayList = HabitList.getTodayHabitList();
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, todayList);
         habitListView.setAdapter(adapter);
-
+        if(HabitList.getHabitList().size() == 0){
+            adapter.notifyDataSetChanged();
+        }
         habitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(HabitList.getHabitList().size() == 0){
+                    adapter.notifyDataSetChanged();
+                }
                 Habit habit = HabitList.getTodayHabitList().get(position);
                 Toast.makeText(getApplicationContext(), habit.getName() + " Completed", Toast.LENGTH_SHORT).show();
                 habit.addCompletion();
@@ -66,14 +71,12 @@ public class TodayHabitList extends Activity {
 
     @Override
     public void onResume(){
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, HabitList.getTodayHabitList());
-        adapter.notifyDataSetChanged();
         super.onResume();
+        todayList = HabitList.getTodayHabitList();
+        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, todayList);
+        habitListView.setAdapter(adapter);
     }
 
-    public void createListView(){
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

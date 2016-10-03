@@ -35,10 +35,7 @@ public class HabitList {
         return habitList;
     }
     public static List<Habit> getTodayHabitList(){
-        if(todayHabitList == null) {
-            todayHabitList = new ArrayList<Habit>();
-        }
-        todayHabitList.clear();
+        todayHabitList = new ArrayList<Habit>();
         for(Habit i:habitList){
             if(i.containDay(Calendar.DAY_OF_WEEK)){
                 todayHabitList.add(i);
